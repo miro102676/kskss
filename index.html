@@ -1,0 +1,1998 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoldenPath Canada - Online Learning for Canadians 50+</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌟</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #D4AF37;
+            --primary-dark: #B8860B;
+            --secondary: #2E8B57;
+            --accent: #4169E1;
+            --gold: #FFD700;
+            --text: #2C3E50;
+            --text-light: #6C757D;
+            --background: #FFFFFF;
+            --background-alt: #F8F9FA;
+            --border: #E9ECEF;
+            --shadow: 0 10px 40px rgba(0,0,0,0.1);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--background);
+            overflow-x: hidden;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background: rgba(212, 175, 55, 0.08);
+        }
+
+        .nav-cta {
+            background: var(--gradient);
+            color: white !important;
+            padding: 1rem 2.5rem !important;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.05rem;
+            font-family: inherit;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary);
+            padding: 0.5rem;
+            border-radius: 8px;
+        }
+
+        /* People Photos */
+        .people-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .person-card {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem 1rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .person-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .person-photo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(0,0,0,0.1));
+        }
+
+        .person-info h4 {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .person-info p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 100px;
+        }
+
+        .page {
+            display: none;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            color: white;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="none"><path d="M0,0 L800,400 L0,800 Z" fill="rgba(255,255,255,0.1)"/><path d="M1200,0 L400,400 L1200,800 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--secondary);
+            color: white;
+            padding: 1.3rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(46, 139, 87, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(46, 139, 87, 0.5);
+            background: #267a49;
+        }
+
+        .secondary-button {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            box-shadow: none;
+        }
+
+        .secondary-button:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+            position: relative;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background: var(--background-alt);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Courses Section */
+        .courses {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .course-image {
+            height: 200px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0,0,0,0.1), rgba(255,255,255,0.1));
+        }
+
+        .course-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gold);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+        }
+
+        .course-content {
+            padding: 2.5rem;
+        }
+
+        .course-content h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin: 1.5rem 0;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-value {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .meta-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 0;
+            background: var(--background-alt);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .author-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Blog Preview */
+        .blog-preview {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid var(--border);
+        }
+
+        .article-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .article-image {
+            height: 220px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            text-align: center;
+            padding: 2rem;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0,0,0,0.1), rgba(255,255,255,0.1));
+        }
+
+        .article-content {
+            padding: 2.5rem;
+        }
+
+        .article-content h3 {
+            margin-bottom: 1rem;
+            color: var(--text);
+            font-size: 1.4rem;
+            line-height: 1.4;
+        }
+
+        .article-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .read-more:hover {
+            gap: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background: var(--background-alt);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--text);
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            background: var(--background-alt);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+            background: white;
+        }
+
+        .form-group textarea {
+            height: 180px;
+            resize: vertical;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .contact-item {
+            margin: 2rem 0;
+            font-size: 1.2rem;
+        }
+
+        .contact-item strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 200px;
+            background: var(--gradient);
+            border-radius: 12px;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-social .social-link {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-social .social-link:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin-bottom: 0.8rem;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Success Stories Button */
+        .success-stories-btn {
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(65, 105, 225, 0.3);
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .success-stories-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(65, 105, 225, 0.4);
+            background: #3159d4;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-left: 2rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--background-alt);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 30px;
+            }
+            
+            .people-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 968px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+
+            .social-links {
+                display: none;
+            }
+
+            .people-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                border-radius: 0 0 20px 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .features-grid,
+            .courses-grid,
+            .testimonials-grid,
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .people-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .person-photo {
+                width: 100px;
+                height: 100px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .cta-button {
+                padding: 1.1rem 2rem;
+                font-size: 1.1rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .feature-card,
+            .course-card,
+            .testimonial-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .hero {
+                padding: 4rem 0;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo" onclick="showPage('home')">
+                <div class="logo-icon">GP</div>
+                GoldenPath Canada
+            </a>
+            <div class="social-links">
+                <a href="https://www.instagram.com/goldenpathcanada" class="social-link" aria-label="Instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://twitter.com/goldenpathca" class="social-link" aria-label="Twitter" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.youtube.com/@goldenpathcanada" class="social-link" aria-label="YouTube" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('courses')">Courses</a></li>
+                <li><a href="#" onclick="showPage('success-stories')">Success Stories</a></li>
+                <li><a href="#" onclick="showPage('blog')">Blog</a></li>
+                <li><button class="nav-cta" onclick="showPage('contacts')">
+                    <i class="fas fa-calendar-check"></i> Free Consultation
+                </button></li>
+                <li class="mobile-social" style="display: none;">
+                    <div class="social-links" style="justify-content: center; margin: 1rem 0;">
+                        <a href="https://www.instagram.com/goldenpathcanada" class="social-link" aria-label="Instagram" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com/goldenpathca" class="social-link" aria-label="Twitter" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@goldenpathcanada" class="social-link" aria-label="YouTube" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <!-- Hero Section with People Photos -->
+            <div class="hero">
+                <div class="container hero-content">
+                    <h1>Discover Your Golden Path After 50</h1>
+                    <p>Join thousands of Canadians 50+ who are building new careers, learning valuable skills, and achieving financial freedom through our specialized online courses</p>
+                    
+                    <!-- People Photos Grid -->
+               <div class="people-grid">
+    <div class="person-card">
+        <div class="person-photo" style="background-image: url('casha.jpg');"></div>
+        <div class="person-info">
+            <h4>Margaret Johnson</h4>
+            <p>Vancouver • Bookkeeper</p>
+        </div>
+    </div>
+    <div class="person-card">
+        <div class="person-photo" style="background-image: url('gosha.jpg');"></div>
+        <div class="person-info">
+            <h4>Robert Wilson</h4>
+            <p>Toronto • Digital Marketer</p>
+        </div>
+    </div>
+    <div class="person-card">
+        <div class="person-photo" style="background-image: url('ivan.jpg');"></div>
+        <div class="person-info">
+            <h4>Susan Chen</h4>
+            <p>Calgary • Virtual Assistant</p>
+        </div>
+    </div>
+    <div class="person-card">
+        <div class="person-photo" style="background-image: url('pasha.jpg');"></div>
+        <div class="person-info">
+            <h4>David Park</h4>
+            <p>Montreal • Online Tutor</p>
+        </div>
+    </div>
+</div>
+
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <button class="cta-button" onclick="showPage('contacts')">
+                            <i class="fas fa-play-circle"></i> Start Your Journey
+                        </button>
+                        <button class="cta-button secondary-button" onclick="showPage('success-stories')">
+                            <i class="fas fa-star"></i> View Success Stories
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats">
+                <div class="container">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">22K+</div>
+                            <div class="stat-label">Canadian Learners</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Success Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">$3,100</div>
+                            <div class="stat-label">Avg. Monthly Income</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">4.9/5</div>
+                            <div class="stat-label">Student Rating</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="features">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Why GoldenPath Works for Canadians 50+</h2>
+                        <p class="section-subtitle">Education designed specifically for your life stage and goals</p>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3>Age-Appropriate Learning</h3>
+                            <p>Courses designed with mature learners in mind - no prior tech experience needed. Learn at your own pace with our senior-friendly platform.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-hand-holding-usd"></i>
+                            </div>
+                            <h3>Income Focused</h3>
+                            <p>Learn skills that can immediately generate income from the comfort of your home. Our courses are designed to get you earning quickly.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Community Support</h3>
+                            <p>Connect with fellow Canadian seniors and experienced instructors. Join our vibrant community of learners supporting each other.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Courses Section -->
+            <div class="courses">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Most Popular Courses</h2>
+                        <p class="section-subtitle">Skills that are in high demand across Canada</p>
+                    </div>
+                    
+                    <div class="courses-grid">
+                        <div class="course-card">
+                            <div class="course-image">
+                                <i class="fas fa-calculator"></i>
+                                <div class="course-badge">Most Popular</div>
+                            </div>
+                            <div class="course-content">
+                                <h3>Remote Bookkeeping</h3>
+                                <p>Master essential financial skills needed by businesses nationwide. Perfect for detail-oriented individuals who enjoy working with numbers.</p>
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <div class="meta-value">4-6 months</div>
+                                        <div class="meta-label">Duration</div>
+                                    </div>
+                                    <div class="meta-item">
+                                        <div class="meta-value">$3,200+</div>
+                                        <div class="meta-label">Monthly Potential</div>
+                                    </div>
+                                </div>
+                                <ul style="color: var(--text-light); margin-top: 1rem; list-style: none; padding-left: 0;">
+                                    <li style="margin-bottom: 0.5rem;">✓ QuickBooks Online Certification</li>
+                                    <li style="margin-bottom: 0.5rem;">✓ Canadian Tax Basics</li>
+                                    <li style="margin-bottom: 0.5rem;">✓ Client Management Skills</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-image">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="course-content">
+                                <h3>Digital Marketing</h3>
+                                <p>Learn to help local businesses grow online. High demand for Canadian social media expertise and content creation skills.</p>
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <div class="meta-value">3-5 months</div>
+                                        <div class="meta-label">Duration</div>
+                                    </div>
+                                    <div class="meta-item">
+                                        <div class="meta-value">$2,500+</div>
+                                        <div class="meta-label">Monthly Potential</div>
+                                    </div>
+                                </div>
+                                <ul style="color: var(--text-light); margin-top: 1rem; list-style: none; padding-left: 0;">
+                                    <li style="margin-bottom: 0.5rem;">✓ Social Media Management</li>
+                                    <li style="margin-bottom: 0.5rem;">✓ Google Business Profile</li>
+                                    <li style="margin-bottom: 0.5rem;">✓ Content Creation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-image">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="course-content">
+                                <h3>Virtual Assistance</h3>
+                                <p>Provide administrative support to Canadian businesses. Flexible hours, work from anywhere with just a computer and internet.</p>
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <div class="meta-value">2-4 months</div>
+                                        <div class="meta-label">Duration</div>
+                                    </div>
+                                    <div class="meta-item">
+                                        <div class="meta-value">$2,000+</div>
+                                        <div class="meta-label">Monthly Potential</div>
+                                    </div>
+                                </div>
+                                <ul style="color: var(--text-light); margin-top: 1rem; list-style: none; padding-left: 0;">
+                                    <li style="margin-bottom: 0.5rem;">✓ Email Management</li>
+                                    <li style="margin-bottom: 0.5rem;">✓ Scheduling & Calendar</li>
+                                    <li style="margin-bottom: 0.5rem;">✓ Customer Service</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <button class="cta-button" onclick="showPage('courses')">
+                            <i class="fas fa-book-open"></i> View All Courses
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials Section -->
+            <div class="testimonials">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Canadian Success Stories</h2>
+                        <p class="section-subtitle">Real people, real transformations across Canada</p>
+                    </div>
+                    
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card">
+                            <div class="testimonial-text">
+                                "At 63, I never thought I'd start a new career. GoldenPath showed me how to turn my organizational skills into a thriving bookkeeping business. I now earn $3,500 monthly working from my Vancouver home, helping small Canadian businesses manage their finances. The support from instructors and fellow students made all the difference!"
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar" style="background-image: url('https://images.unsplash.com/photo-1551836026-d5c88ac5d691?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80'); background-size: cover;"></div>
+                                <div class="author-info">
+                                    <h4>Margaret Johnson</h4>
+                                    <p>63, Vancouver • Remote Bookkeeper</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-text">
+                                "After 40 years in education, I wanted a new challenge that used my communication skills. The digital marketing course was perfect! I now help local Toronto restaurants with their social media and earn $2,800 monthly doing work I genuinely enjoy. The flexible schedule lets me continue volunteering in my community."
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80'); background-size: cover;"></div>
+                                <div class="author-info">
+                                    <h4>Robert Wilson</h4>
+                                    <p>68, Toronto • Digital Marketer</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-text">
+                                "As a grandmother, I needed flexible work that fit around family time. The virtual assistance course changed everything. I now work 20 hours weekly, earn $2,200 monthly, and still have plenty of time for my grandchildren. GoldenPath made learning so accessible and the community support was incredible!"
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80'); background-size: cover;"></div>
+                                <div class="author-info">
+                                    <h4>Susan Chen</h4>
+                                    <p>59, Calgary • Virtual Assistant</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <button class="success-stories-btn" onclick="showPage('success-stories')">
+                            <i class="fas fa-trophy"></i> Read More Success Stories
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Preview Section -->
+            <div class="blog-preview">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">From Our Blog</h2>
+                        <p class="section-subtitle">Insights and success stories from the GoldenPath community</p>
+                    </div>
+                    
+                    <div class="articles-grid">
+                        <div class="article-card" onclick="showPage('blog')">
+                            <div class="article-image">
+                                Canadians Discover Easy Way to Boost Retirement Income
+                            </div>
+                            <div class="article-content">
+                                <h3>Canadians Discover Easy Way to Boost Retirement Income</h3>
+                                <p>How thousands of Canadian seniors are supplementing their pensions with simple online skills that can be learned from home in just a few months...</p>
+                                <a class="read-more">Read Story <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="article-card" onclick="showPage('blog')">
+                            <div class="article-image">
+                                Simple Method Helps Seniors Save Hundreds Monthly
+                            </div>
+                            <div class="article-content">
+                                <h3>Simple Method Helps Seniors Save Hundreds Monthly</h3>
+                                <p>The learning approach that's helping Canadians reduce expenses while earning extra income through flexible online work opportunities...</p>
+                                <a class="read-more">Read Story <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="article-card" onclick="showPage('blog')">
+                            <div class="article-image">
+                                Seniors Uncover Smart Way to Earn More From Home
+                            </div>
+                            <div class="article-content">
+                                <h3>Seniors Uncover Smart Way to Earn More From Home</h3>
+                                <p>How digital skills are creating new income opportunities for Canadians 50+ across the country, from coast to coast...</p>
+                                <a class="read-more">Read Story <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <button class="cta-button" onclick="showPage('blog')">
+                            <i class="fas fa-newspaper"></i> View All Articles
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Page -->
+        <section id="courses" class="page">
+            <div class="courses" style="padding-top: 4rem;">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">All Courses</h2>
+                        <p class="section-subtitle">Choose from our comprehensive selection of career-focused programs</p>
+                    </div>
+                    
+                    <div class="courses-grid">
+                        <div class="course-card">
+                            <div class="course-image">
+                                <i class="fas fa-calculator"></i>
+                                <div class="course-badge">Most Popular</div>
+                            </div>
+                            <div class="course-content">
+                                <h3>Remote Bookkeeping</h3>
+                                <p>Master essential financial skills needed by businesses nationwide. Perfect for detail-oriented individuals who enjoy working with numbers.</p>
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <div class="meta-value">4-6 months</div>
+                                        <div class="meta-label">Duration</div>
+                                    </div>
+                                    <div class="meta-item">
+                                        <div class="meta-value">$3,200+</div>
+                                        <div class="meta-label">Monthly Potential</div>
+                                    </div>
+                                </div>
+                                <ul style="color: var(--text-light); margin-top: 1rem; list-style: none; padding-left: 0;">
+                                    <li style="margin-bottom: 0.5rem;">✓ QuickBooks Online Certification</li>
+                                    <li style="margin-bottom: 0.5rem;">✓ Canadian Tax Basics</li>
+                                    <li style="margin-bottom: 0.5rem;">✓ Client Management Skills</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-image">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="course-content">
+                                <h3>Digital Marketing</h3>
+                                <p>Learn to help local businesses grow online. High demand for Canadian social media expertise and content creation skills.</p>
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <div class="meta-value">3-5 months</div>
+                                        <div class="meta-label">Duration</div>
+                                    </div>
+                                    <div class="meta-item">
+                                        <div class="meta-value">$2,500+</div>
+                                        <div class="meta-label">Monthly Potential</div>
+                                    </div>
+                                </div>
+                                <ul style="color: var(--text-light); margin-top: 1rem; list-style: none; padding-left: 0;">
+                                    <li style="margin-bottom: 0.5rem;">✓ Social Media Management</li>
+                                    <li style="margin-bottom: 0.5rem;">✓ Google Business Profile</li>
+                                    <li style="margin-bottom: 0.5rem;">✓ Content Creation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-image">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="course-content">
+                                <h3>Virtual Assistance</h3>
+                                <p>Provide administrative support to Canadian businesses. Flexible hours, work from anywhere with just a computer and internet.</p>
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <div class="meta-value">2-4 months</div>
+                                        <div class="meta-label">Duration</div>
+                                    </div>
+                                    <div class="meta-item">
+                                        <div class="meta-value">$2,000+</div>
+                                        <div class="meta-label">Monthly Potential</div>
+                                    </div>
+                                </div>
+                                <ul style="color: var(--text-light); margin-top: 1rem; list-style: none; padding-left: 0;">
+                                    <li style="margin-bottom: 0.5rem;">✓ Email Management</li>
+                                    <li style="margin-bottom: 0.5rem;">✓ Scheduling & Calendar</li>
+                                    <li style="margin-bottom: 0.5rem;">✓ Customer Service</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-image">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <div class="course-content">
+                                <h3>Online Tutoring</h3>
+                                <p>Share your knowledge and expertise with students across Canada. Flexible hours and rewarding work helping others learn.</p>
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <div class="meta-value">2-3 months</div>
+                                        <div class="meta-label">Duration</div>
+                                    </div>
+                                    <div class="meta-item">
+                                        <div class="meta-value">$2,800+</div>
+                                        <div class="meta-label">Monthly Potential</div>
+                                    </div>
+                                </div>
+                                <ul style="color: var(--text-light); margin-top: 1rem; list-style: none; padding-left: 0;">
+                                    <li style="margin-bottom: 0.5rem;">✓ Teaching Methodologies</li>
+                                    <li style="margin-bottom: 0.5rem;">✓ Online Platform Skills</li>
+                                    <li style="margin-bottom: 0.5rem;">✓ Student Engagement</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-image">
+                                <i class="fas fa-pen-fancy"></i>
+                            </div>
+                            <div class="course-content">
+                                <h3>Content Writing</h3>
+                                <p>Develop professional writing skills for websites, blogs, and marketing materials. High demand for quality Canadian content.</p>
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <div class="meta-value">3-4 months</div>
+                                        <div class="meta-label">Duration</div>
+                                    </div>
+                                    <div class="meta-item">
+                                        <div class="meta-value">$2,300+</div>
+                                        <div class="meta-label">Monthly Potential</div>
+                                    </div>
+                                </div>
+                                <ul style="color: var(--text-light); margin-top: 1rem; list-style: none; padding-left: 0;">
+                                    <li style="margin-bottom: 0.5rem;">✓ SEO Writing Techniques</li>
+                                    <li style="margin-bottom: 0.5rem;">✓ Copywriting Fundamentals</li>
+                                    <li style="margin-bottom: 0.5rem;">✓ Client Communication</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-image">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <div class="course-content">
+                                <h3>Tech Support</h3>
+                                <p>Learn to provide technical assistance to individuals and businesses. Essential skills for today's digital world.</p>
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <div class="meta-value">4-5 months</div>
+                                        <div class="meta-label">Duration</div>
+                                    </div>
+                                    <div class="meta-item">
+                                        <div class="meta-value">$2,700+</div>
+                                        <div class="meta-label">Monthly Potential</div>
+                                    </div>
+                                </div>
+                                <ul style="color: var(--text-light); margin-top: 1rem; list-style: none; padding-left: 0;">
+                                    <li style="margin-bottom: 0.5rem;">✓ Troubleshooting Techniques</li>
+                                    <li style="margin-bottom: 0.5rem;">✓ Remote Support Tools</li>
+                                    <li style="margin-bottom: 0.5rem;">✓ Customer Service Excellence</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <button class="cta-button" onclick="showPage('contacts')">
+                            <i class="fas fa-info-circle"></i> Get Course Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Stories Page -->
+        <section id="success-stories" class="page">
+            <div class="testimonials" style="padding: 4rem 0;">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Inspiring Success Stories</h2>
+                        <p class="section-subtitle">Real Canadians 50+ who transformed their lives through online learning</p>
+                    </div>
+
+                    <!-- Featured Success Story -->
+                    <div class="testimonial-card" style="margin-bottom: 4rem;">
+                        <div class="testimonial-text" style="font-size: 1.2rem;">
+                            "After being laid off at 58, I thought my career was over. GoldenPath gave me not just new skills, but a new purpose. I went from worrying about retirement to running my own successful bookkeeping practice. In my first year, I earned over $45,000 working from home. The GoldenPath community became my second family - we still meet monthly to support each other's businesses."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="width: 80px; height: 80px; background-image: url(''); background-size: cover;"></div>
+                            <div class="author-info">
+                                <h4>Barbara Johnson</h4>
+                                <p>62, Ottawa • Former Retail Manager turned Bookkeeper</p>
+                                <p style="color: var(--primary); font-weight: 600;">Income: $45,000+ annually</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card">
+                            <div class="testimonial-text">
+                                "As a retired nurse, I never imagined I'd work in tech. The virtual assistance course was life-changing! I now manage schedules and communications for three busy executives. The best part? I can work around my yoga classes and grandchildren's visits. GoldenPath made me feel confident about learning new technology at 64."
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar" style="background-image: url('https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80'); background-size: cover;"></div>
+                                <div class="author-info">
+                                    <h4>Patricia Smith</h4>
+                                    <p>64, Halifax • Virtual Executive Assistant</p>
+                                    <p style="color: var(--primary); font-weight: 600;">Earns: $2,800/month</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-card">
+                            <div class="testimonial-text">
+                                "My construction career left me with back problems, but GoldenPath showed me I could build a new career with my mind instead of my hands. The digital marketing skills I learned helped me create a thriving consulting business. I now help local contractors get more customers online. At 61, I'm earning more than I ever did in construction!"
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80'); background-size: cover;"></div>
+                                <div class="author-info">
+                                    <h4>Michael Wilson</h4>
+                                    <p>61, Edmonton • Digital Marketing Consultant</p>
+                                    <p style="color: var(--primary); font-weight: 600;">Earns: $4,200/month</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-card">
+                            <div class="testimonial-text">
+                                "After my husband passed, I felt lost and isolated. GoldenPath gave me not just income, but a new community. I started with the content writing course and now have regular clients across Canada. Writing from my kitchen table, I earn enough to travel and visit my children. This program gave me back my independence at 67."
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar" style="background-image: url('https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80'); background-size: cover;"></div>
+                                <div class="author-info">
+                                    <h4>Eleanor Davis</h4>
+                                    <p>67, Victoria • Freelance Writer</p>
+                                    <p style="color: var(--primary); font-weight: 600;">Earns: $2,500/month</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <button class="success-stories-btn" style="font-size: 1.1rem; padding: 1.2rem 3rem;" onclick="showPage('contacts')">
+                            <i class="fas fa-rocket"></i> Start Your Success Story
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Page -->
+        <section id="blog" class="page">
+            <div class="blog-preview" style="padding-top: 4rem;">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">GoldenPath Blog</h2>
+                        <p class="section-subtitle">Insights, tips, and success stories from our community</p>
+                    </div>
+                    
+                    <div class="articles-grid">
+                        <div class="article-card">
+                            <div class="article-image">
+                                Canadians Discover Easy Way to Boost Retirement Income
+                            </div>
+                            <div class="article-content">
+                                <h3>Canadians Discover Easy Way to Boost Retirement Income</h3>
+                                <p>How thousands of Canadian seniors are supplementing their pensions with simple online skills that can be learned from home in just a few months. Discover the most in-demand skills and how to get started.</p>
+                                <div style="display: flex; justify-content: space-between; margin-top: 1.5rem; color: var(--text-light); font-size: 0.9rem;">
+                                    <span><i class="far fa-calendar"></i> March 15, 2024</span>
+                                    <span><i class="far fa-clock"></i> 8 min read</span>
+                                </div>
+                                <a class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="article-card">
+                            <div class="article-image">
+                                Simple Method Helps Seniors Save Hundreds Monthly
+                            </div>
+                            <div class="article-content">
+                                <h3>Simple Method Helps Seniors Save Hundreds Monthly</h3>
+                                <p>The learning approach that's helping Canadians reduce expenses while earning extra income through flexible online work opportunities. Real stories from seniors who transformed their financial situation.</p>
+                                <div style="display: flex; justify-content: space-between; margin-top: 1.5rem; color: var(--text-light); font-size: 0.9rem;">
+                                    <span><i class="far fa-calendar"></i> February 28, 2024</span>
+                                    <span><i class="far fa-clock"></i> 6 min read</span>
+                                </div>
+                                <a class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="article-card">
+                            <div class="article-image">
+                                Seniors Uncover Smart Way to Earn More From Home
+                            </div>
+                            <div class="article-content">
+                                <h3>Seniors Uncover Smart Way to Earn More From Home</h3>
+                                <p>How digital skills are creating new income opportunities for Canadians 50+ across the country, from coast to coast. Learn which skills are most profitable and how to market yourself effectively.</p>
+                                <div style="display: flex; justify-content: space-between; margin-top: 1.5rem; color: var(--text-light); font-size: 0.9rem;">
+                                    <span><i class="far fa-calendar"></i> February 12, 2024</span>
+                                    <span><i class="far fa-clock"></i> 10 min read</span>
+                                </div>
+                                <a class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="article-card">
+                            <div class="article-image">
+                                Why Canadian Seniors Are Embracing Online Learning
+                            </div>
+                            <div class="article-content">
+                                <h3>Why Canadian Seniors Are Embracing Online Learning</h3>
+                                <p>Exploring the growing trend of Canadians 50+ turning to online education to boost their skills, income, and social connections. The benefits go far beyond financial gains.</p>
+                                <div style="display: flex; justify-content: space-between; margin-top: 1.5rem; color: var(--text-light); font-size: 0.9rem;">
+                                    <span><i class="far fa-calendar"></i> January 25, 2024</span>
+                                    <span><i class="far fa-clock"></i> 7 min read</span>
+                                </div>
+                                <a class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="article-card">
+                            <div class="article-image">
+                                Top 5 In-Demand Skills for Canadian Seniors in 2024
+                            </div>
+                            <div class="article-content">
+                                <h3>Top 5 In-Demand Skills for Canadian Seniors in 2024</h3>
+                                <p>A comprehensive guide to the most sought-after skills that Canadian businesses are looking for. Learn which abilities can generate the highest income with the least time investment.</p>
+                                <div style="display: flex; justify-content: space-between; margin-top: 1.5rem; color: var(--text-light); font-size: 0.9rem;">
+                                    <span><i class="far fa-calendar"></i> January 10, 2024</span>
+                                    <span><i class="far fa-clock"></i> 12 min read</span>
+                                </div>
+                                <a class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="article-card">
+                            <div class="article-image">
+                                From Retirement to Re-engagement: A Senior's Journey
+                            </div>
+                            <div class="article-content">
+                                <h3>From Retirement to Re-engagement: A Senior's Journey</h3>
+                                <p>The inspiring story of a 72-year-old who went from feeling isolated in retirement to building a thriving online business and finding a new sense of purpose and community.</p>
+                                <div style="display: flex; justify-content: space-between; margin-top: 1.5rem; color: var(--text-light); font-size: 0.9rem;">
+                                    <span><i class="far fa-calendar"></i> December 18, 2023</span>
+                                    <span><i class="far fa-clock"></i> 9 min read</span>
+                                </div>
+                                <a class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <button class="cta-button" onclick="showPage('contacts')">
+                            <i class="fas fa-envelope"></i> Subscribe to Our Newsletter
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contacts" class="page">
+            <div class="contact">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Start Your Learning Journey</h2>
+                        <p class="section-subtitle">Get personalized guidance on the perfect course for your goals</p>
+                    </div>
+                    
+                    <div class="contact-grid">
+                        <div class="contact-form">
+                            <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                                <div class="form-group">
+                                    <label for="name"><i class="fas fa-user"></i> Full Name</label>
+                                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="+1 (XXX) XXX-XXXX">
+                                </div>
+                                <div class="form-group">
+                                    <label for="age"><i class="fas fa-birthday-cake"></i> Age Group</label>
+                                    <select id="age" name="age">
+                                        <option value="50-59">50-59 years</option>
+                                        <option value="60-69">60-69 years</option>
+                                        <option value="70+">70+ years</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="interest"><i class="fas fa-graduation-cap"></i> Course Interest</label>
+                                    <select id="interest" name="interest">
+                                        <option value="bookkeeping">Remote Bookkeeping</option>
+                                        <option value="digital-marketing">Digital Marketing</option>
+                                        <option value="virtual-assistance">Virtual Assistance</option>
+                                        <option value="tutoring">Online Tutoring</option>
+                                        <option value="writing">Content Writing</option>
+                                        <option value="tech-support">Tech Support</option>
+                                        <option value="not-sure">Not Sure Yet</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message"><i class="fas fa-comment"></i> Your Goals & Questions</label>
+                                    <textarea id="message" name="message" required placeholder="Tell us about your goals, experience, and any questions you have..."></textarea>
+                                </div>
+                                <button type="submit" class="cta-button" style="width: 100%; border: none; cursor: pointer;">
+                                    <i class="fas fa-paper-plane"></i> Send Message & Get Free Consultation
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <strong>Toronto Headquarters</strong>
+                                <div>100 King Street West, Suite 5700<br>
+                                Toronto, ON M5X 1C7<br>
+                                Canada</div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <strong>Email Us</strong>
+                                <div>learn@goldenpath.ca</div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <strong>Call Us</strong>
+                                <div>+1 (416) 555-0199</div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <strong>Office Hours</strong>
+                                <div>Monday-Friday: 8:30 AM - 5:30 PM EST<br>
+                                Saturday: 9 AM - 3 PM EST</div>
+                            </div>
+
+                            <div class="map-placeholder">
+                                <i class="fas fa-map-marked-alt"></i> Toronto Office Location
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="logo-icon">GP</div>
+                        GoldenPath Canada
+                    </div>
+                    <p class="footer-description">
+                        Empowering Canadians 50+ with specialized online education to unlock new income opportunities, learn valuable skills, and achieve financial confidence in retirement. Join 22,000+ successful senior learners across Canada.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/goldenpathcanada" class="social-link" aria-label="Instagram" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com/goldenpathca" class="social-link" aria-label="Twitter" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@goldenpathcanada" class="social-link" aria-label="YouTube" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.facebook.com/goldenpathcanada" class="social-link" aria-label="Facebook" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#" onclick="showPage('home')">Home</a></li>
+                        <li><a href="#" onclick="showPage('courses')">Courses</a></li>
+                        <li><a href="#" onclick="showPage('success-stories')">Success Stories</a></li>
+                        <li><a href="#" onclick="showPage('blog')">Blog</a></li>
+                        <li><a href="#" onclick="showPage('contacts')">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li>100 King Street West</li>
+                        <li>Toronto, ON M5X 1C7</li>
+                        <li>learn@goldenpath.ca</li>
+                        <li>+1 (416) 555-0199</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 GoldenPath Canada. All rights reserved. | Specialized Online Education for Canadians 50+</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            document.querySelector('.nav-links').classList.remove('active');
+            window.scrollTo(0, 0);
+            return false;
+        }
+
+        // Mobile Menu
+        function toggleMobileMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        // Form Submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const name = formData.get('name');
+            
+            // Show beautiful success message
+            const originalText = event.submitter.innerHTML;
+            event.submitter.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+            event.submitter.style.background = 'var(--accent)';
+            
+            setTimeout(() => {
+                alert(`Thank you, ${name}! We've received your message and will contact you within 24 hours to schedule your free consultation and discuss the perfect course options for your goals.`);
+                event.target.reset();
+                event.submitter.innerHTML = originalText;
+                event.submitter.style.background = '';
+                showPage('home');
+            }, 2000);
+        }
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Handle responsive social links
+        function handleResponsive() {
+            const socialLinks = document.querySelector('.social-links');
+            const navLinks = document.querySelector('.nav-links');
+            const mobileSocial = document.querySelector('.mobile-social');
+            
+            if (window.innerWidth <= 968) {
+                if (socialLinks && !mobileSocial) {
+                    const mobileSocialDiv = document.createElement('li');
+                    mobileSocialDiv.className = 'mobile-social';
+                    mobileSocialDiv.style.display = 'flex';
+                    mobileSocialDiv.style.justifyContent = 'center';
+                    mobileSocialDiv.style.marginTop = '1rem';
+                    mobileSocialDiv.style.padding = '1rem';
+                    
+                    const socialClone = socialLinks.cloneNode(true);
+                    socialClone.style.justifyContent = 'center';
+                    socialClone.style.gap = '1rem';
+                    mobileSocialDiv.appendChild(socialClone);
+                    navLinks.appendChild(mobileSocialDiv);
+                }
+            } else {
+                if (mobileSocial) {
+                    mobileSocial.remove();
+                }
+            }
+        }
+
+        // Initial call and event listener
+        handleResponsive();
+        window.addEventListener('resize', handleResponsive);
+    </script>
+</body>
+</html>
